@@ -1,24 +1,18 @@
 package com.dflorencia.movieapp.overview
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import com.dflorencia.movieapp.api.TmdbApi
 import com.dflorencia.movieapp.databinding.FragmentOverviewBinding
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class OverviewFragment: Fragment() {
 
     private val viewModel: OverviewViewModel by viewModels()
-
-/*    @Inject
-    lateinit var tmdbApi: TmdbApi*/
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -30,7 +24,9 @@ class OverviewFragment: Fragment() {
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
 
-//        Log.d("Prueba",tmdbApi.toString())
+        binding.rvItems.adapter = ItemAdapter(ItemAdapter.ItemClickListener {
+            viewModel.displayItemDetails(it)
+        })
 
         return binding.root
     }

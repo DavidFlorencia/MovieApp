@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="recycler_view_padding">6dp</dimen>
+    <dimen name="item_height">300dp</dimen>
+    <dimen name="text_size_body">14sp</dimen>
 </resources>
