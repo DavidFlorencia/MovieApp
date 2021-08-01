@@ -1,7 +1,6 @@
 package com.dflorencia.movieapp.movie
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
+import com.dflorencia.movieapp.R
 import com.dflorencia.movieapp.databinding.FragmentDetailBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -32,8 +32,16 @@ class DetailFragment:Fragment() {
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
 
-        (activity as AppCompatActivity).supportActionBar?.title = "Detail of ${args.movie.title}"
+        viewModel.movie.observe(viewLifecycleOwner){
+            (activity as AppCompatActivity).supportActionBar?.title = it.title
+        }
 
         return binding.root
+    }
+
+    override fun onResume() {
+        super.onResume()
+        (activity as AppCompatActivity).supportActionBar?.title =
+            getString(R.string.detail_from_movie)
     }
 }

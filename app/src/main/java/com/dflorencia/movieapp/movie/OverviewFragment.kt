@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.dflorencia.movieapp.R
 import com.dflorencia.movieapp.api.Movie
 import com.dflorencia.movieapp.databinding.FragmentOverviewBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -35,7 +36,8 @@ class OverviewFragment: Fragment() {
     }
 
     override fun onResume() {
-        (activity as AppCompatActivity).supportActionBar?.title = "Movies"
+        (activity as AppCompatActivity).supportActionBar?.title =
+            getString(R.string.top_rated_movies)
         super.onResume()
     }
 

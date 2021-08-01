@@ -37,7 +37,9 @@ class OverviewViewModel @Inject constructor(val movieRepository: MovieRepository
                 movieRepository.refreshMovies()
                 _status.value = ApiStatus.DONE
             } catch (networkError: IOException) {
-                _status.value = ApiStatus.ERROR
+                if (movies.value.isNullOrEmpty()) {
+                    _status.value = ApiStatus.ERROR
+                }
             }
         }
     }
