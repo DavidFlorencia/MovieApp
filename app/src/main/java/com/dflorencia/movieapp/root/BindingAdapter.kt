@@ -20,13 +20,20 @@ fun setData(recyclerView: RecyclerView, data: List<Movie>?){
 }
 
 @BindingAdapter("imageUrl")
-fun setImageUrl(imageView: ImageView, url: String) {
-    val baseUrl = imageView.context.getString(R.string.base_url_images)
-    val absolutUrl = baseUrl + url
+fun setImageUrl(imageView: ImageView, url: String?) {
+    url?.let {
+        val baseUrl = imageView.context.getString(R.string.base_url_images)
+        val absolutUrl = baseUrl + url
 
-    Glide.with(imageView.context)
-        .load(absolutUrl)
-        .into(imageView)
+        Glide.with(imageView.context)
+            .load(absolutUrl)
+            .into(imageView)
+
+        imageView.scaleType = ImageView.ScaleType.FIT_XY
+    } ?: run {
+        imageView.setImageResource(R.drawable.ic_broken)
+        imageView.scaleType = ImageView.ScaleType.FIT_CENTER;
+    }
 }
 
 @BindingAdapter("apiStatus")
