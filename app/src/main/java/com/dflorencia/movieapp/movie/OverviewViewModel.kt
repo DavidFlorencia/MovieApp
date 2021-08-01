@@ -23,7 +23,6 @@ class OverviewViewModel @Inject constructor(val movieRepository: MovieRepository
     val status: LiveData<ApiStatus> get() = _status;
 
 //    private lateinit var currentMoviePage: MoviePage
-
 //    private val _movies = MutableLiveData<List<Movie>>();
     val movies: LiveData<List<Movie>> get() = movieRepository.movies
 
@@ -33,31 +32,33 @@ class OverviewViewModel @Inject constructor(val movieRepository: MovieRepository
 
     private fun refreshDataFromRepository() {
         viewModelScope.launch {
+            _status.value = ApiStatus.LOADING
             try {
                 movieRepository.refreshMovies()
+                _status.value = ApiStatus.DONE
             } catch (networkError: IOException) {
-
+                _status.value = ApiStatus.ERROR
             }
         }
     }
 
 
-    private fun getApiItems() {
+/*    private fun getApiItems() {
         viewModelScope.launch {
             _status.value = ApiStatus.LOADING
             try {
-//                currentMoviePage = tmdbApi.getTopRatedMovies(apiKey)
-//                _movies.value = currentMoviePage.movies
+                currentMoviePage = tmdbApi.getTopRatedMovies(apiKey)
+                _movies.value = currentMoviePage.movies
                 _status.value = ApiStatus.DONE
             }catch (e:Exception){
                 _status.value = ApiStatus.ERROR
-//                currentMoviePage = MoviePage()
+                currentMoviePage = MoviePage()
             }
         }
-    }
+    }*/
 
-    fun displayItemDetails(movie: Movie) {
+/*    fun displayItemDetails(movie: Movie) {
         Log.d("Prueba",movie.title.toString())
-    }
+    }*/
 
 }

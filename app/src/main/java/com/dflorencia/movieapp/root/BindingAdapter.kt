@@ -1,6 +1,7 @@
 package com.dflorencia.movieapp.root
 
 import android.view.View
+import android.view.animation.AnimationUtils
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -14,6 +15,8 @@ import com.dflorencia.movieapp.movie.MovieAdapter
 fun setData(recyclerView: RecyclerView, data: List<Movie>?){
     val adapter = recyclerView.adapter as MovieAdapter
     adapter.submitList(data)
+    val controller = AnimationUtils.loadLayoutAnimation(recyclerView.context, R.anim.recycler_view_animation)
+    recyclerView.layoutAnimation = controller
 }
 
 @BindingAdapter("imageUrl")

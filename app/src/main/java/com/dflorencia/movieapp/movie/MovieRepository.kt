@@ -21,7 +21,10 @@ class MovieRepository @Inject constructor(private val movieDao: MovieDao,
     suspend fun refreshMovies(){
         withContext(Dispatchers.IO){
             val response = tmdbApi.getTopRatedMovies(apiKey)
-            response.movies?.asDatabaseModel()?.let { movieDao.insertAll(it) }
+            response.movies?.asDatabaseModel()?.let {
+                movieDao.clear()
+                movieDao.insertAll(it)
+            }
         }
     }
 
