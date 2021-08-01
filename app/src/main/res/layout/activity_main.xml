@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <fragment
-    android:name="com.dflorencia.movieapp.movie_overview.MovieOverviewFragment"
+    android:name="com.dflorencia.movieapp.movie.OverviewFragment"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"

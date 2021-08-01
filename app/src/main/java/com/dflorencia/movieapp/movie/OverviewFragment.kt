@@ -1,4 +1,4 @@
-package com.dflorencia.movieapp.movie_overview
+package com.dflorencia.movieapp.movie
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,7 +10,7 @@ import com.dflorencia.movieapp.databinding.FragmentOverviewBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MovieOverviewFragment: Fragment() {
+class OverviewFragment: Fragment() {
 
     private val viewModel: OverviewViewModel by viewModels()
 

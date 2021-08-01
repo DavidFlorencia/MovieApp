@@ -13,18 +13,18 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 import javax.inject.Singleton
 
 @Module
-@InstallIn(ViewModelComponent::class)
+@InstallIn(SingletonComponent::class)
 class ApiModule {
     private val BASE_URL = "https://api.themoviedb.org/3/"
 
-    @Provides
     @Singleton
+    @Provides
     fun provideMoshi(): Moshi = Moshi.Builder()
         .add(KotlinJsonAdapterFactory())
         .build()
 
-    @Provides
     @Singleton
+    @Provides
     fun provideRetrofit(baseUrl: String, moshi: Moshi): Retrofit =
         Retrofit.Builder()
         .addConverterFactory(MoshiConverterFactory.create(moshi))
@@ -32,7 +32,6 @@ class ApiModule {
         .build()
 
     @Provides
-    @ViewModelScoped
     fun provideTmdbService(): TmdbApi =
         provideRetrofit(BASE_URL,provideMoshi())
             .create(TmdbApi::class.java)
