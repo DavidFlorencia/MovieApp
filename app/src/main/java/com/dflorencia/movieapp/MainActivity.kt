@@ -2,7 +2,6 @@ package com.dflorencia.movieapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.dflorencia.movieapp.overview.OverviewViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

@@ -1,4 +1,4 @@
-package com.dflorencia.movieapp.overview
+package com.dflorencia.movieapp.movie_overview
 
 import android.util.Log
 import androidx.lifecycle.LiveData

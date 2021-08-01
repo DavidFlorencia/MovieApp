@@ -9,7 +9,7 @@
 
         <variable
             name="clickListener"
-            type="com.dflorencia.movieapp.overview.MovieAdapter.MovieClickListener" />
+            type="com.dflorencia.movieapp.movie_overview.MovieAdapter.MovieClickListener" />
     </data>
 
     <LinearLayout

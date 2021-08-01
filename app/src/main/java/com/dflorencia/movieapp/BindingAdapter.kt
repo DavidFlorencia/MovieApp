@@ -6,8 +6,8 @@ import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.dflorencia.movieapp.api.Movie
-import com.dflorencia.movieapp.overview.ApiStatus
-import com.dflorencia.movieapp.overview.MovieAdapter
+import com.dflorencia.movieapp.movie_overview.ApiStatus
+import com.dflorencia.movieapp.movie_overview.MovieAdapter
 
 @BindingAdapter("data")
 fun setData(recyclerView: RecyclerView, data: List<Movie>?){
