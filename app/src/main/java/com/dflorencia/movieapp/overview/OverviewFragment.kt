@@ -24,7 +24,7 @@ class OverviewFragment: Fragment() {
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
 
-        binding.rvItems.adapter = ItemAdapter(ItemAdapter.ItemClickListener {
+        binding.rvItems.adapter = MovieAdapter(MovieAdapter.MovieClickListener {
             viewModel.displayItemDetails(it)
         })
 

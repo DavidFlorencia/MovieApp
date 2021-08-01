@@ -2,7 +2,7 @@ package com.dflorencia.movieapp.api
 
 import com.squareup.moshi.Json
 
-class Item {
+class Movie {
     @Json(name = "adult")
     var adult: Boolean? = null
 

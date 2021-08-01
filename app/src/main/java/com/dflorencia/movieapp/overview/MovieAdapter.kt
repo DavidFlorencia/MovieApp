@@ -5,15 +5,15 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.dflorencia.movieapp.api.Item
+import com.dflorencia.movieapp.api.Movie
 import com.dflorencia.movieapp.databinding.ItemViewBinding
 
-class ItemAdapter(val clickListener: ItemClickListener): ListAdapter<Item,ItemAdapter.ItemViewHolder>(ItemDiffCallback()) {
+class MovieAdapter(val clickListener: MovieClickListener): ListAdapter<Movie,MovieAdapter.ItemViewHolder>(ItemDiffCallback()) {
 
     class ItemViewHolder private constructor(val binding:ItemViewBinding):
         RecyclerView.ViewHolder(binding.root){
-        fun bind(item: Item, clickListener: ItemClickListener){
-            binding.item = item;
+        fun bind(movie: Movie, clickListener: MovieClickListener){
+            binding.movie = movie;
             binding.clickListener = clickListener;
             binding.executePendingBindings();
         }
@@ -27,13 +27,13 @@ class ItemAdapter(val clickListener: ItemClickListener): ListAdapter<Item,ItemAd
         }
     }
 
-    class ItemDiffCallback: DiffUtil.ItemCallback<Item>(){
-        override fun areItemsTheSame(oldItem: Item, newItem: Item): Boolean {
-            return oldItem === newItem
+    class ItemDiffCallback: DiffUtil.ItemCallback<Movie>(){
+        override fun areItemsTheSame(oldMovie: Movie, newMovie: Movie): Boolean {
+            return oldMovie === newMovie
         }
 
-        override fun areContentsTheSame(oldItem: Item, newItem: Item): Boolean {
-            return oldItem.id == newItem.id
+        override fun areContentsTheSame(oldMovie: Movie, newMovie: Movie): Boolean {
+            return oldMovie.id == newMovie.id
         }
     }
 
@@ -42,11 +42,11 @@ class ItemAdapter(val clickListener: ItemClickListener): ListAdapter<Item,ItemAd
     }
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
-        val item = getItem(position) as Item
+        val item = getItem(position) as Movie
         holder.bind(item, clickListener)
     }
 
-    class ItemClickListener(val clickListener: (item: Item) -> Unit){
-        fun onClick(item: Item) = clickListener(item);
+    class MovieClickListener(val clickListener: (movie: Movie) -> Unit){
+        fun onClick(movie: Movie) = clickListener(movie);
     }
 }

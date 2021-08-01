@@ -2,12 +2,12 @@ package com.dflorencia.movieapp.api
 
 import com.squareup.moshi.Json
 
-class Page {
+class MoviePage {
     @Json(name = "page")
     var page: Int? = null
 
     @Json(name = "results")
-    var items: List<Item>? = null
+    var movies: List<Movie>? = null
 
     @Json(name = "total_pages")
     var totalPages: Int? = null

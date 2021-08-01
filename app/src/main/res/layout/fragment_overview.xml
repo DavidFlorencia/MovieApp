@@ -26,7 +26,7 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:listitem="@layout/item_view"
-            app:data="@{viewModel.pageInfo.items}"/>
+            app:data="@{viewModel.moviePage.movies}"/>
 
         <ImageView
             android:id="@+id/imgStatus"
@@ -35,7 +35,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent"
+            app:apiStatus="@{viewModel.status}"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

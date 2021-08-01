@@ -4,19 +4,19 @@
 
     <data>
         <variable
-            name="item"
-            type="com.dflorencia.movieapp.api.Item" />
+            name="movie"
+            type="com.dflorencia.movieapp.api.Movie" />
 
         <variable
             name="clickListener"
-            type="com.dflorencia.movieapp.overview.ItemAdapter.ItemClickListener" />
+            type="com.dflorencia.movieapp.overview.MovieAdapter.MovieClickListener" />
     </data>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/item_height"
         android:orientation="vertical"
-        android:onClick="@{()->clickListener.onClick(item)}">
+        android:onClick="@{()->clickListener.onClick(movie)}">
 
         <ImageView
             android:id="@+id/ivCoverPage"
@@ -26,11 +26,11 @@
             android:scaleType="fitXY"
             android:adjustViewBounds="true"
             android:padding="2dp"
-            imageUrl="@{item.posterPath}"
+            imageUrl="@{movie.posterPath}"
             tools:src="@tools:sample/backgrounds/scenic"/>
 
         <TextView
-            android:text="@{item.title}"
+            android:text="@{movie.title}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"

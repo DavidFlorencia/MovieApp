@@ -5,21 +5,26 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.dflorencia.movieapp.api.Item
-import com.dflorencia.movieapp.api.Page
+import com.dflorencia.movieapp.api.Movie
+import com.dflorencia.movieapp.api.MoviePage
 import com.dflorencia.movieapp.api.TmdbApi
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import java.lang.Exception
 import javax.inject.Inject
 
+enum class ApiStatus { LOADING, ERROR, DONE }
+
 @HiltViewModel
 class OverviewViewModel @Inject constructor(val tmdbApi: TmdbApi): ViewModel() {
 
     private val apiKey = "33d1fa5693faffec860d5568c417e32f"
 
-    private val _pageInfo = MutableLiveData<Page>()
-    val pageInfo: LiveData<Page> get() = _pageInfo
+    private val _status = MutableLiveData<ApiStatus>();
+    val status: LiveData<ApiStatus> get() = _status;
+
+    private val _moviePage = MutableLiveData<MoviePage>()
+    val moviePage: LiveData<MoviePage> get() = _moviePage
 
     init {
         getApiItems()
@@ -27,16 +32,19 @@ class OverviewViewModel @Inject constructor(val tmdbApi: TmdbApi): ViewModel() {
 
     private fun getApiItems() {
         viewModelScope.launch {
+            _status.value = ApiStatus.LOADING;
             try {
-                _pageInfo.value = tmdbApi.getTopRatedMovies(apiKey)
+                _moviePage.value = tmdbApi.getTopRatedMovies(apiKey)
+                _status.value = ApiStatus.DONE;
             }catch (e:Exception){
-                _pageInfo.value = Page()
+                _status.value = ApiStatus.ERROR;
+                _moviePage.value = MoviePage()
             }
         }
     }
 
-    fun displayItemDetails(item: Item) {
-        Log.d("Prueba",item.title.toString())
+    fun displayItemDetails(movie: Movie) {
+        Log.d("Prueba",movie.title.toString())
     }
 
 }
