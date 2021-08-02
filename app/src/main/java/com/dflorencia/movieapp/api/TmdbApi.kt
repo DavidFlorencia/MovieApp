@@ -1,6 +1,7 @@
 package com.dflorencia.movieapp.api
 
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface TmdbApi {
@@ -14,4 +15,10 @@ interface TmdbApi {
     suspend fun searchMoviesFromNetwork(
         @Query("api_key") apiKey:String,
         @Query("query") query: String): MoviePage
+
+    @GET("movie/{movie_id}/videos")
+    suspend fun getMovieTrailers(
+        @Path("movie_id") movieId: String,
+        @Query("api_key") apiKey:String
+    ): MovieTrailerPage
 }

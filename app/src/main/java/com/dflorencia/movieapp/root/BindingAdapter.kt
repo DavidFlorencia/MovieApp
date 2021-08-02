@@ -1,7 +1,9 @@
 package com.dflorencia.movieapp.root
 
+import android.util.DisplayMetrics
 import android.view.View
 import android.view.animation.AnimationUtils
+import android.webkit.WebView
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -11,6 +13,7 @@ import com.dflorencia.movieapp.R
 import com.dflorencia.movieapp.api.Movie
 import com.dflorencia.movieapp.ui.ApiStatus
 import com.dflorencia.movieapp.ui.MovieAdapter
+
 
 @BindingAdapter("data")
 fun setData(recyclerView: RecyclerView, data: List<Movie>?){
@@ -57,5 +60,25 @@ fun setStatus(statusImageView: ImageView,
         ApiStatus.DONE -> {
             statusImageView.visibility = View.GONE
         }
+    }
+}
+
+@BindingAdapter("videoUrl")
+fun setVideoUrl(webView: WebView, key: String?) {
+    key?.let {
+        val url = "https://www.youtube.com/embed/$key"
+        val dataUrl = "<html>" +
+                "<head>\n" +
+                "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n" +
+                "</head>" +
+                "<body>" +
+                "<br>" +
+                "<iframe width=\"100%\" height=\"100%\" src=\"" +
+                url +
+                "\" frameborder=\"0\" allowfullscreen/>" +
+                "</body>" +
+                "</html>"
+
+        webView.loadData(dataUrl, "text/html", "utf-8")
     }
 }

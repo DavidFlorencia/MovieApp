@@ -1,6 +1,8 @@
 package com.dflorencia.movieapp.root
 
+import android.util.Log
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import com.dflorencia.movieapp.api.Keys
 import com.dflorencia.movieapp.api.Movie
@@ -32,6 +34,14 @@ class MovieRepository @Inject constructor(private val movieDao: MovieDao,
                 movieDao.insertAll(it)
             }
         }
+    }
+
+    private val _key = MutableLiveData<String>();
+    val key: LiveData<String> get() = _key
+
+    suspend fun refreshMovieTrailerKey(movieId:String) {
+        val movieTrailerPage = tmdbApi.getMovieTrailers(movieId,apiKey)
+        _key.value = movieTrailerPage.movieTrailers?.get(0)?.key.toString()
     }
 
     val movies: LiveData<List<Movie>> = Transformations.map(movieDao.getMovies()){
