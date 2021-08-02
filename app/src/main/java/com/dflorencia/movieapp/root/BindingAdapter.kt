@@ -1,6 +1,5 @@
 package com.dflorencia.movieapp.root
 
-import android.util.DisplayMetrics
 import android.view.View
 import android.view.animation.AnimationUtils
 import android.webkit.WebView
@@ -26,7 +25,7 @@ fun setData(recyclerView: RecyclerView, data: List<Movie>?){
 @BindingAdapter("imageUrl")
 fun setImageUrl(imageView: ImageView, url: String?) {
     url?.let {
-        val baseUrl = imageView.context.getString(R.string.base_url_images_large)
+        val baseUrl = imageView.context.getString(R.string.base_url_images)
 
         val absolutUrl = baseUrl + url
 
