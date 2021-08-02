@@ -1,4 +1,4 @@
-package com.dflorencia.movieapp.movie
+package com.dflorencia.movieapp.ui
 
 import android.os.Bundle
 import android.view.*
@@ -10,7 +10,6 @@ import androidx.navigation.fragment.findNavController
 import com.dflorencia.movieapp.R
 import com.dflorencia.movieapp.api.Movie
 import com.dflorencia.movieapp.databinding.FragmentOverviewBinding
-import com.google.android.material.tabs.TabLayout
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

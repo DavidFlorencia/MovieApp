@@ -1,4 +1,4 @@
-package com.dflorencia.movieapp.movie
+package com.dflorencia.movieapp.ui
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

@@ -1,7 +1,6 @@
-package com.dflorencia.movieapp.movie
+package com.dflorencia.movieapp.ui
 
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +11,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.dflorencia.movieapp.R
 import com.dflorencia.movieapp.databinding.FragmentDetailBinding
+import com.dflorencia.movieapp.viewmodel.DetailViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 

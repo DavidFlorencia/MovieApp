@@ -11,6 +11,8 @@ android {
     compileSdkVersion 30
     buildToolsVersion "30.0.3"
 
+    ndkVersion '22.1.7171670'
+
     defaultConfig {
         applicationId "com.dflorencia.movieapp"
         minSdkVersion 26
@@ -36,6 +38,11 @@ android {
     }
     buildFeatures {
         dataBinding true
+    }
+    externalNativeBuild {
+        cmake {
+            path file('CMakeLists.txt')
+        }
     }
 }
 

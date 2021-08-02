@@ -9,8 +9,8 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.dflorencia.movieapp.R
 import com.dflorencia.movieapp.api.Movie
-import com.dflorencia.movieapp.movie.ApiStatus
-import com.dflorencia.movieapp.movie.MovieAdapter
+import com.dflorencia.movieapp.ui.ApiStatus
+import com.dflorencia.movieapp.ui.MovieAdapter
 
 @BindingAdapter("data")
 fun setData(recyclerView: RecyclerView, data: List<Movie>?){

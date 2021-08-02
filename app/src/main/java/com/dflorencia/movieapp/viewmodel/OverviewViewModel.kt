@@ -1,4 +1,4 @@
-package com.dflorencia.movieapp.movie
+package com.dflorencia.movieapp.ui
 
 import android.util.Log
 import androidx.lifecycle.LiveData
@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.dflorencia.movieapp.api.Movie
+import com.dflorencia.movieapp.root.MovieRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import java.io.IOException

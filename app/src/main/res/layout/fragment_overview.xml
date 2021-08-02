@@ -5,7 +5,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.dflorencia.movieapp.movie.OverviewViewModel" />
+            type="com.dflorencia.movieapp.ui.OverviewViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
