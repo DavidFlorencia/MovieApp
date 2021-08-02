@@ -6,6 +6,7 @@ import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.dflorencia.movieapp.R
 import com.dflorencia.movieapp.api.Movie
 import com.dflorencia.movieapp.movie.ApiStatus
@@ -19,19 +20,19 @@ fun setData(recyclerView: RecyclerView, data: List<Movie>?){
     recyclerView.layoutAnimation = controller
 }
 
-@BindingAdapter("imageUrl","onDetail")
-fun setImageUrl(imageView: ImageView, url: String?, onDetail: Boolean) {
+@BindingAdapter("imageUrl")
+fun setImageUrl(imageView: ImageView, url: String?) {
     url?.let {
-        val baseUrl = if (onDetail){
-            imageView.context.getString(R.string.base_url_images_large)
-        }else{
-            imageView.context.getString(R.string.base_url_images)
-        }
+        val baseUrl = imageView.context.getString(R.string.base_url_images_large)
 
         val absolutUrl = baseUrl + url
 
         Glide.with(imageView.context)
             .load(absolutUrl)
+            .apply(
+                RequestOptions()
+                .placeholder(R.drawable.loading_animation)
+                .error(R.drawable.ic_broken))
             .into(imageView)
 
         imageView.scaleType = ImageView.ScaleType.FIT_XY

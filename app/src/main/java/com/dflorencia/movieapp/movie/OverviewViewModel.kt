@@ -32,19 +32,26 @@ class OverviewViewModel @Inject constructor(val movieRepository: MovieRepository
 
     private fun refreshDataFromRepository(query: String = "") {
         viewModelScope.launch {
-            _status.value = ApiStatus.LOADING
+            setStatus(ApiStatus.LOADING)
             try {
                 filter.value?.let { movieRepository.refreshMovies(it,query) }
-                _status.value = ApiStatus.DONE
+                setStatus(ApiStatus.DONE)
             } catch (networkError: IOException) {
                 if (movies.value.isNullOrEmpty()) {
-                    _status.value = ApiStatus.ERROR
-                }else if (filter.value == Filter.SEARCH){
-                    Log.d("TestAnnotation","Filter cache movies")
+                    setStatus(ApiStatus.ERROR)
+                }else {
+                    if (filter.value == Filter.SEARCH){
+                        Log.d("TestAnnotation","Filter cache movies")
+                    }
+                    setStatus(ApiStatus.DONE)
                 }
                 _filter.value = Filter.CACHE
             }
         }
+    }
+
+    private suspend fun setStatus(status: ApiStatus) {
+        _status.value = status
     }
 
     fun setFilter(filter: Filter, query: String = "") {

@@ -12,4 +12,5 @@
     <dimen name="margin_summary_horizontal">20dp</dimen>
     <dimen name="margin_small">5dp</dimen>
     <dimen name="search_view_height">30dp</dimen>
+    <dimen name="status_padding">50dp</dimen>
 </resources>

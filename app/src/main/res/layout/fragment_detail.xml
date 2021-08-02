@@ -23,7 +23,6 @@
             android:adjustViewBounds="true"
             android:paddingHorizontal="@dimen/detail_poster_horizontal_padding"
             android:paddingTop="@dimen/detail_poster_top_padding"
-            app:onDetail="@{safeUnbox(true)}"
             app:imageUrl="@{viewModel.movie.posterPath}"
             tools:src="@tools:sample/backgrounds/scenic"/>
 
