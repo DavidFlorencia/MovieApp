@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
         <variable
@@ -22,7 +23,8 @@
             android:adjustViewBounds="true"
             android:paddingHorizontal="@dimen/detail_poster_horizontal_padding"
             android:paddingTop="@dimen/detail_poster_top_padding"
-            imageUrl="@{viewModel.movie.posterPath}"
+            app:onDetail="@{safeUnbox(true)}"
+            app:imageUrl="@{viewModel.movie.posterPath}"
             tools:src="@tools:sample/backgrounds/scenic"/>
 
         <LinearLayout

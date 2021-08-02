@@ -19,10 +19,15 @@ fun setData(recyclerView: RecyclerView, data: List<Movie>?){
     recyclerView.layoutAnimation = controller
 }
 
-@BindingAdapter("imageUrl")
-fun setImageUrl(imageView: ImageView, url: String?) {
+@BindingAdapter("imageUrl","onDetail")
+fun setImageUrl(imageView: ImageView, url: String?, onDetail: Boolean) {
     url?.let {
-        val baseUrl = imageView.context.getString(R.string.base_url_images)
+        val baseUrl = if (onDetail){
+            imageView.context.getString(R.string.base_url_images_large)
+        }else{
+            imageView.context.getString(R.string.base_url_images)
+        }
+
         val absolutUrl = baseUrl + url
 
         Glide.with(imageView.context)

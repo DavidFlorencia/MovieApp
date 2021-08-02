@@ -24,8 +24,6 @@ class OverviewViewModel @Inject constructor(val movieRepository: MovieRepository
     private val _filter = MutableLiveData(Filter.TOP_RATED)
     val filter: LiveData<Filter> get() = _filter
 
-//    private lateinit var currentMoviePage: MoviePage
-//    private val _movies = MutableLiveData<List<Movie>>();
     val movies: LiveData<List<Movie>> get() = movieRepository.movies
 
     init {
@@ -59,24 +57,4 @@ class OverviewViewModel @Inject constructor(val movieRepository: MovieRepository
         _filter.value = lastFilter
         refreshDataFromRepository()
     }
-
-
-/*    private fun getApiItems() {
-        viewModelScope.launch {
-            _status.value = ApiStatus.LOADING
-            try {
-                currentMoviePage = tmdbApi.getTopRatedMovies(apiKey)
-                _movies.value = currentMoviePage.movies
-                _status.value = ApiStatus.DONE
-            }catch (e:Exception){
-                _status.value = ApiStatus.ERROR
-                currentMoviePage = MoviePage()
-            }
-        }
-    }*/
-
-/*    fun displayItemDetails(movie: Movie) {
-        Log.d("Prueba",movie.title.toString())
-    }*/
-
 }
