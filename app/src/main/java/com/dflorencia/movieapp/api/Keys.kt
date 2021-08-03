@@ -2,7 +2,11 @@ package com.dflorencia.movieapp.api
 
 object Keys {
     init {
-        System.loadLibrary("native-lib")
+        try {
+            System.loadLibrary("native-lib")
+        } catch (e:UnsatisfiedLinkError) {
+
+        }
     }
 
     external fun apiKey(): String

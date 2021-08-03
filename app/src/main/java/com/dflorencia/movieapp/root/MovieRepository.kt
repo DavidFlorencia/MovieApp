@@ -17,9 +17,10 @@ import javax.inject.Singleton
 
 @Singleton
 class MovieRepository @Inject constructor(private val movieDao: MovieDao,
-                                          private val tmdbApi: TmdbApi){
+                                          private val tmdbApi: TmdbApi,
+                                          private val apiKey: String){
 
-    private val apiKey = Keys.apiKey()
+//    private val apiKey = Keys.apiKey()
 
     suspend fun refreshMovies(filter: Filter, query:String) {
         withContext(Dispatchers.IO){

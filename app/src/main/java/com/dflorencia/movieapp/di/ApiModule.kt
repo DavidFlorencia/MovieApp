@@ -1,5 +1,6 @@
 package com.dflorencia.movieapp.di
 
+import com.dflorencia.movieapp.api.Keys
 import com.dflorencia.movieapp.api.TmdbApi
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -15,6 +16,10 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 class ApiModule {
     private val BASE_URL = "https://api.themoviedb.org/3/"
+
+    @Singleton
+    @Provides
+    fun provideApiKey(): String = Keys.apiKey()
 
     @Singleton
     @Provides
